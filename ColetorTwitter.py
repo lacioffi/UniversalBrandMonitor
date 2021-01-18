@@ -3,7 +3,7 @@ import json
 import splunklib.client as client
 import sqlite3 as sl
 
-tweetsParaBuscar = 10
+tweetsParaBuscar = 600
 splunkUsername = "admin"
 splunkPassword = "admin123"
 
@@ -35,7 +35,7 @@ def openSplunkConnection():
 	return indexConection
 	
 def sendJsonToSplunk(jsonData, indexConection): 
-	indexConection.submit(jsonData)
+	indexConection.submit(jsonData, sourcetype="twitter")
 	
 def verificarTweetJaVisto(tweetId):
 	with dbConnection:
@@ -98,7 +98,7 @@ except:
 	print("Banco de dados ja existe")
 	
 resultadosTotal = []
-resultadosTotal = resultadosTotal + procurarTweets("santander")
+resultadosTotal = resultadosTotal + procurarTweets("AprendaComTC")
 resultadosFinal = removerDuplicados(resultadosTotal)
 
 if (len(resultadosFinal) > 0):
