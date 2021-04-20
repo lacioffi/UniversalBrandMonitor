@@ -3,7 +3,7 @@ import json
 import splunklib.client as client
 import sqlite3 as sl
 
-tweetsParaBuscar = 600
+tweetsParaBuscar = 4000
 splunkUsername = "admin"
 splunkPassword = "admin123"
 
